@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knapsack Problem Result</title>
+</head>
+<body>
+    <h1>Knapsack Problem Result Dynamic Programming</h1>
+    <p>Maximum profit: {{ max_profit }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Weights</th>
+                <th>profits</th>
+                <!-- Add additional table header columns for capacities -->
+                {% for w in range(capacity + 1) %}
+                    <th>{{ w }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(n + 1) %}
+                <tr>
+                    {% if i < n %}
+                        <td>{{ weights[i] }}</td>
+                        <td>{{ profits[i] }}</td>
+                    {% else %}
+                        <td>-</td>
+                        <td>-</td>
+                    {% endif %}
+                    <!-- Add table cells for process profits -->
+                    {% for j in range(capacity + 1) %}
+                        <td>{{ table[i][j] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br><br>
+    <h1>Knapsack Problem Result Brute Force</h1>
+    <p>Maximum profit: {{ max_profit }}</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Weights</th>
+                <th>profits</th>
+                <!-- Add additional table header columns for capacities -->
+                {% for w in range(capacity + 1) %}
+                    <th>{{ w }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in range(n + 1) %}
+                <tr>
+                    {% if i < n %}
+                        <td>{{ weights[i] }}</td>
+                        <td>{{ profits[i] }}</td>
+                    {% else %}
+                        <td>-</td>
+                        <td>-</td>
+                    {% endif %}
+                    <!-- Add table cells for process profits -->
+                    {% for j in range(capacity + 1) %}
+                        <td>{{ table[i][j] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
