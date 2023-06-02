@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+table, th, td {
+    border: 1px solid black;
+}
+
+h1, h3, h2, th, label {
+    font-family: 'Exo 2', sans-serif;
+}
+
+.parallelogram {
+    height: 100px;
+    width: 200px;
+    background-color: #098bfa;
+    transform: skew(20deg);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+  
