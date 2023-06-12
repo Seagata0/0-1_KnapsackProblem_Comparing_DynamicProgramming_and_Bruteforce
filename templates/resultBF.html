@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
-  
 <head>
-    <title>0/1 Knapsack Problem</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Knapsack Problem Result</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
         table, th, td {
@@ -26,9 +28,6 @@
             margin: 50px;
             border-radius: 10px;
         }
-        .parallelogram.hover{
-            background-size: 100% 100%;
-        }
         * {
             margin: 0;
             padding: 0;
@@ -44,6 +43,7 @@
             margin: auto;
             max-width: 1000px;
             justify-content: space-between;
+            align-items: center;
             text-align: center;
         }
         button {
@@ -58,6 +58,7 @@
             min-width: 80px;
             margin: inherit;
         }
+        
         button:hover {
             background-image: url('https://drive.google.com/uc?export=view&id=1CV1sdqZjLfdf2BunSXIk20NGLh8CVjuY');
             background-size: 100% 100%;
@@ -82,7 +83,7 @@
         }
         75% {
             -webkit-transform-origin: center center;
-            -webkit-transform: scale(1.05, 1);
+            -webkit-transform: scale(1.1, 1);
             opacity: 100%;
         }
         100% {
@@ -102,14 +103,6 @@
             color: #098bfa;
             text-align: center;
         }
-        .flex-container {
-            border: #098bfa;
-            justify-content: center;
-            align-content: center;
-            width: 35%;
-            height: 100%;
-            background-color: #e9eaec;
-        }
         p{
             font-weight: bold;
         }
@@ -120,20 +113,12 @@
         <form action="/knapsack2" method="POST">
             <ul>
                 <button type="submit" name="action" value="home">Home</button>
+                <button type="submit" name="action" value="dynamic">Dynamic Programming</button>
                 <button type="submit" name="action" value="kelompok">Anggota Kelompok</button>
             </ul>
-        </form>
+        <form action="/knapsack2" method="POST">
     </div><br>
-    <h1>0/1 Knapsack Problem</h1><br>
-    <div class="flex-container">
-        <form action="/item" method="POST">
-            <label for="weight">Masukkan Weight dari item:</label>
-            <input type="text" id="weight" name="weight" required><br>
-            <label for="profit">Masukkan Profit dari item:</label>
-            <input type="text" id="profit" name="profit" required><br>
-            <button type="submit">Masukkan ke list</button><br><br>
-        </form>
-    </div><br>
+    <h1>Knapsack Problem Result Brute Force</h1><br>
     <h3>Isi Tas:</h3>
     <table>
         <thead>
@@ -144,9 +129,9 @@
             </tr>
         </thead>
         <tbody>
-            {% for i in range(x + 1) %}
+            {% for i in range(n + 1) %}
             <tr>
-                {% if i < x %}
+                {% if i < n %}
                     <td>{{ i+1 }}</td>
                     <td>{{ weights[i] }}</td>
                     <td>{{ profits[i] }}</td>
@@ -154,15 +139,37 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table><br><br><br>
-    <div class="flex-container">
-        <form action="/knapsack" method="POST">
-            <label for="capacity">Masukkan Kapasitas Maksimum dari tas:</label>
-            <input type="text" id="capacity" name="capacity" required><br>
-            <button type="submit" name="action" value="brute">Brute Force</button>
-            <button type="submit" name="action" value="dynamic">Dynamic Programming</button>
-        </form>
-    </div>
+    </table><br>
+    <h3>Maximum profit: {{ profit }}</h3>
+    <h3>Item yang terpilih: {{ items }}</h3><br>
+    <h2>Exhaustive Search:</h2>
+    <table class="fixed">
+        <col width="20px" />
+        <col width="80px" />
+        <col width="75px" />
+        <col width="120 px" />
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Profits</th>
+                <th>Weights</th>
+                <th>Item</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in iteration %}
+                <tr>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form action="/knapsack2" method="POST">
+        <button class="parallelogram" type="submit" name="action" value="dynamic">Dynamic Programming</button>
+    </form>
     <div class="footer">
         <p>Kelompok 12 IF-45-01</p>
     </div>

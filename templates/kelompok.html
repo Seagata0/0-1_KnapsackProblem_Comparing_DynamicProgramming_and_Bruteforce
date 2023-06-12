@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html>
-  
+<html lang="en">
 <head>
-    <title>0/1 Knapsack Problem</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelompok 12</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
         table, th, td {
             border: 1px solid black;
         }
-
-        h1, h3, h2, th, label {
+        h1, h3, h2, th, label, li {
             font-family: 'Exo 2', sans-serif;
+        }
+        p{
+            font-weight: bold;
         }
         .parallelogram {
             height: 100px;
@@ -25,9 +29,6 @@
             justify-content: center;
             margin: 50px;
             border-radius: 10px;
-        }
-        .parallelogram.hover{
-            background-size: 100% 100%;
         }
         * {
             margin: 0;
@@ -44,6 +45,7 @@
             margin: auto;
             max-width: 1000px;
             justify-content: space-between;
+            align-items: center;
             text-align: center;
         }
         button {
@@ -58,6 +60,7 @@
             min-width: 80px;
             margin: inherit;
         }
+        
         button:hover {
             background-image: url('https://drive.google.com/uc?export=view&id=1CV1sdqZjLfdf2BunSXIk20NGLh8CVjuY');
             background-size: 100% 100%;
@@ -82,7 +85,7 @@
         }
         75% {
             -webkit-transform-origin: center center;
-            -webkit-transform: scale(1.05, 1);
+            -webkit-transform: scale(1.1, 1);
             opacity: 100%;
         }
         100% {
@@ -102,16 +105,8 @@
             color: #098bfa;
             text-align: center;
         }
-        .flex-container {
-            border: #098bfa;
-            justify-content: center;
-            align-content: center;
-            width: 35%;
-            height: 100%;
-            background-color: #e9eaec;
-        }
-        p{
-            font-weight: bold;
+        .center {
+            text-align: center;
         }
     </style>
 </head>
@@ -120,48 +115,18 @@
         <form action="/knapsack2" method="POST">
             <ul>
                 <button type="submit" name="action" value="home">Home</button>
+                <button type="submit" name="action" value="brute">Brute Force</button>
+                <button type="submit" name="action" value="dynamic">Dynamic Programming</button>
                 <button type="submit" name="action" value="kelompok">Anggota Kelompok</button>
             </ul>
-        </form>
-    </div><br>
-    <h1>0/1 Knapsack Problem</h1><br>
-    <div class="flex-container">
-        <form action="/item" method="POST">
-            <label for="weight">Masukkan Weight dari item:</label>
-            <input type="text" id="weight" name="weight" required><br>
-            <label for="profit">Masukkan Profit dari item:</label>
-            <input type="text" id="profit" name="profit" required><br>
-            <button type="submit">Masukkan ke list</button><br><br>
-        </form>
-    </div><br>
-    <h3>Isi Tas:</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Weights</th>
-                <th>Profits</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for i in range(x + 1) %}
-            <tr>
-                {% if i < x %}
-                    <td>{{ i+1 }}</td>
-                    <td>{{ weights[i] }}</td>
-                    <td>{{ profits[i] }}</td>
-                {% endif %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table><br><br><br>
-    <div class="flex-container">
-        <form action="/knapsack" method="POST">
-            <label for="capacity">Masukkan Kapasitas Maksimum dari tas:</label>
-            <input type="text" id="capacity" name="capacity" required><br>
-            <button type="submit" name="action" value="brute">Brute Force</button>
-            <button type="submit" name="action" value="dynamic">Dynamic Programming</button>
-        </form>
+        <form action="/knapsack2" method="POST">
+    </div>
+    <div class="center">
+        <br>
+        <h1>Nama Anggota:</h1><br>
+        <h2>Seagata Ade Pratama Barus (1301210371)</h2>
+        <h2>Ario Tegar Ramadhanto Putra (1301213441)</h2>
+        <h2>Dwiki Arliman (1301213397)</h2> 
     </div>
     <div class="footer">
         <p>Kelompok 12 IF-45-01</p>

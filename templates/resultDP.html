@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
-  
 <head>
-    <title>0/1 Knapsack Problem</title>
+    <title>Knapsack Problem Result</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&display=swap');
         table, th, td {
@@ -102,14 +101,6 @@
             color: #098bfa;
             text-align: center;
         }
-        .flex-container {
-            border: #098bfa;
-            justify-content: center;
-            align-content: center;
-            width: 35%;
-            height: 100%;
-            background-color: #e9eaec;
-        }
         p{
             font-weight: bold;
         }
@@ -120,49 +111,51 @@
         <form action="/knapsack2" method="POST">
             <ul>
                 <button type="submit" name="action" value="home">Home</button>
+                <button type="submit" name="action" value="brute">Brute Force</button>
                 <button type="submit" name="action" value="kelompok">Anggota Kelompok</button>
             </ul>
-        </form>
+        <form action="/knapsack2" method="POST">
     </div><br>
-    <h1>0/1 Knapsack Problem</h1><br>
-    <div class="flex-container">
-        <form action="/item" method="POST">
-            <label for="weight">Masukkan Weight dari item:</label>
-            <input type="text" id="weight" name="weight" required><br>
-            <label for="profit">Masukkan Profit dari item:</label>
-            <input type="text" id="profit" name="profit" required><br>
-            <button type="submit">Masukkan ke list</button><br><br>
-        </form>
-    </div><br>
-    <h3>Isi Tas:</h3>
+    <h1>Knapsack Problem Result Dynamic Programming</h1><br>
+    <h3>Maximum profit: {{ profit }}</h3>
+    <h3>Item yang dipilih: {{ items }}</h3><br>
     <table>
         <thead>
             <tr>
-                <th>No</th>
                 <th>Weights</th>
                 <th>Profits</th>
+                {% for w in range(capacity + 1) %}
+                    <th>{{ w }}</th>
+                {% endfor %}
             </tr>
         </thead>
         <tbody>
-            {% for i in range(x + 1) %}
             <tr>
-                {% if i < x %}
-                    <td>{{ i+1 }}</td>
-                    <td>{{ weights[i] }}</td>
-                    <td>{{ profits[i] }}</td>
-                {% endif %}
+                <td>0</td>
+                <td>0</td>
+                {% for j in range(capacity + 1) %}
+                    <td>{{ 0 }}</td>
+                 {% endfor %}
             </tr>
-        {% endfor %}
+            {% for i in range(n) %}
+                <tr>
+                    {% if i < n %}
+                        <td>{{ weights[i] }}</td>
+                        <td>{{ profits[i] }}</td>
+                    {% else %}
+                        <td>-</td>
+                        <td>-</td>
+                    {% endif %}
+                    {% for j in range(capacity + 1) %}
+                        <td>{{ table[i+1][j] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
         </tbody>
-    </table><br><br><br>
-    <div class="flex-container">
-        <form action="/knapsack" method="POST">
-            <label for="capacity">Masukkan Kapasitas Maksimum dari tas:</label>
-            <input type="text" id="capacity" name="capacity" required><br>
-            <button type="submit" name="action" value="brute">Brute Force</button>
-            <button type="submit" name="action" value="dynamic">Dynamic Programming</button>
-        </form>
-    </div>
+    </table>
+    <form action="/knapsack2" method="POST">
+        <button class="parallelogram" type="submit" name="action" value="brute">Brute Force</button>
+    </form>
     <div class="footer">
         <p>Kelompok 12 IF-45-01</p>
     </div>
